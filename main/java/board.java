@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class board {
 
-	private static final int MAX_SIZE_BOARD = 3;
+	private static final int MAX_SIZE_BOARD = 6;
 	char [][] board = new char [MAX_SIZE_BOARD][MAX_SIZE_BOARD];
 	
 
@@ -52,8 +52,24 @@ public int[] generateRandom() {
 	int min_val = 0;
 	Random ran = new Random();
 	int [] randomCoordenate = new int[2];
-	randomCoordenate[0] = ran.nextInt(MAX_SIZE_BOARD) ;
-	randomCoordenate[1] = ran.nextInt(MAX_SIZE_BOARD) ;
+	randomCoordenate[1] = ran.nextInt(MAX_SIZE_BOARD) ; //columna aleatoria ,fila depende de huecos
+	
+	int i,j;
+	i=MAX_SIZE_BOARD-1; //empieza por la fila de más abajo
+	j=randomCoordenate[1]; 
+	boolean fin=false;
+	do {
+		System.out.println("Mirando en x= "+i + " e y =" + j);
+		if (this.board[i][j] ==' ') {
+			System.out.print("está dispoinble");
+			randomCoordenate[0]=i;
+			fin=true;
+		}
+		else i--;		
+		
+	}	while (!(fin) && (i>=0));
+
+	System.out.println("coordenada seleccionada: "+randomCoordenate[0]+"-"+randomCoordenate[1]);
 	return randomCoordenate;
 	
 	
